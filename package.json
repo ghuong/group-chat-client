@@ -1,5 +1,5 @@
 {
-  "name": "sim-mud-client",
+  "name": "group-chat-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
