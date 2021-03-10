@@ -1,4 +1,10 @@
-# Getting Started with Create React App
+# Group Chat Client
+
+## About
+
+This is the web client component for an anonymous real-time group chat. There is a corresponding [server](https://github.com/ghuong/group-chat-server).
+
+## Getting Started
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
