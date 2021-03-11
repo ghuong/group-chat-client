@@ -1,9 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import socketIOClient from "socket.io-client";
-
-// TODO: extract to a config file
-const NEW_CHAT_MESSAGE_EVENT = "newChatMessage"; // name of the event
-const SOCKET_SERVER_URL = "http://localhost:4001";
+import config from "./config";
 
 /**
  * Custom useChat hook
@@ -18,10 +15,10 @@ const useChat = () => {
 
   useEffect(() => {
     // Create WebSocket connection
-    socketRef.current = socketIOClient(SOCKET_SERVER_URL);
+    socketRef.current = socketIOClient(config.SOCKET_SERVER_URL);
 
     // Listen for incoming messages
-    socketRef.current.on(NEW_CHAT_MESSAGE_EVENT, (message) => {
+    socketRef.current.on(config.NEW_CHAT_MESSAGE_EVENT, (message) => {
       const incomingMessage = { ...message };
       setMessages((messages) => [...messages, incomingMessage]);
     });
@@ -34,7 +31,7 @@ const useChat = () => {
    * Sends a message to server that forwards to all other users
    */
   const sendMessage = (messageBody) => {
-    socketRef.current.emit(NEW_CHAT_MESSAGE_EVENT, {
+    socketRef.current.emit(config.NEW_CHAT_MESSAGE_EVENT, {
       body: messageBody,
       // senderId: socketRef.current.id,
     });
