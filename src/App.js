@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ClientComponent from "./components/ClientComponent";
+import ChatWindow from "./components/ChatWindow";
 
 const App = () => {
   const [shouldLoadClient, setShouldLoadClient] = useState(true);
@@ -11,7 +11,7 @@ const App = () => {
         {shouldLoadClient ? "STOP CLIENT" : "START CLIENT"}
       </button>
       {/* SOCKET IO CLIENT */}
-      {shouldLoadClient ? <ClientComponent /> : null}
+      {shouldLoadClient ? <ChatWindow /> : null}
     </>
   );
 };
