@@ -33,7 +33,11 @@ const NewMessageForm = ({
           ref={messageRef}
           autoFocus
         />
-        <Button variant="primary" className={`${styles.btn_send_message}`}>
+        <Button
+          variant="secondary"
+          className={`${styles.btn_send_message}`}
+          onClick={handleSendMessage}
+        >
           Send
         </Button>
       </Form>
