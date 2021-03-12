@@ -12,7 +12,7 @@ const MessagesPanel = ({ messages, className }) => {
 
   return (
     <div className={`${styles.messages_panel} ${className}`}>
-      <ol id="messages" className="messages">
+      <ol className={styles.messages_list}>
         {messages.map((message, i) => (
           <li key={i /* TODO: idx as key = anti-pattern */}>{message.body}</li>
         ))}

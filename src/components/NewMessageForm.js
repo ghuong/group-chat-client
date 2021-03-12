@@ -15,14 +15,14 @@ const NewMessageForm = ({
 }) => {
   const messageRef = useRef(null); // reference to a component
 
-  // Auto-focus message input on render
+  // Auto-focus message input on first render
   useEffect(() => messageRef.current.focus(), []);
-
+  // Auto focus message input when user types
   useStartTyping(() => messageRef.current.focus());
 
   return (
     <div className={className}>
-      <Form onSubmit={handleSendMessage} autocomplete="off" inline>
+      <Form onSubmit={handleSendMessage} autoComplete="off" inline>
         <Form.Label srOnly>Type Your Message</Form.Label>
         <Form.Control
           id="message"
