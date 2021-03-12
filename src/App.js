@@ -6,10 +6,10 @@ const App = () => {
 
   return (
     <>
-      {/* LOAD OR UNLOAD CLIENT */}
+      {/* LOAD OR UNLOAD CLIENT
       <button onClick={() => setShouldLoadClient((prevState) => !prevState)}>
         {shouldLoadClient ? "STOP CLIENT" : "START CLIENT"}
-      </button>
+      </button> */}
       {/* SOCKET IO CLIENT */}
       {shouldLoadClient ? <ChatWindow /> : null}
     </>
