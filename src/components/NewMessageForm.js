@@ -1,8 +1,9 @@
 import React from "react";
 
+// Bootstrap CSS
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import "./css/NewMessageForm.css";
+// import styles from "./css/NewMessageForm.module.css";
 
 const NewMessageForm = ({
   newMessage,

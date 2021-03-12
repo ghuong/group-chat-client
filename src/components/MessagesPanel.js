@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./css/MessagesPanel.css"
+// import styles from "./css/MessagesPanel.module.css"
 
 const MessagesPanel = ({ messages, className }) => {  
   return (

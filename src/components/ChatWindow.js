@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 
 // CSS
-import "./css/ChatWindow.css";
+import styles from "./css/ChatWindow.module.css";
 
+// Custom Hook
 import useChat from "../utils/useChat";
 
+// Child Components
 import MessagesPanel from "./MessagesPanel";
 import NewMessageForm from "./NewMessageForm";
 
@@ -23,13 +25,13 @@ const ChatWindow = () => {
   };
 
   return (
-    <div className="chat_window">
-      <MessagesPanel messages={messages} className="messages_panel" />
+    <div className={styles.chat_window}>
+      <MessagesPanel messages={messages} className={styles.messages_panel} />
       <NewMessageForm
         newMessage={newMessage}
         handleNewMessageChange={handleNewMessageChange}
         handleSendMessage={handleSendMessage}
-        className="new_message_form"
+        className={styles.new_message_form}
       />
     </div>
   );
