@@ -1,20 +1,18 @@
-import React, { useState } from "react";
-import ChatWindow from "./components/ChatWindow";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import styles from "./App.module.css";
+import Home from "./components/Home"
+import ChatRoom from "./components/ChatRoom";
 
 const App = () => {
-  const [shouldLoadClient, setShouldLoadClient] = useState(true);
+  // const [shouldLoadClient, setShouldLoadClient] = useState(true);
 
   return (
-    <div className={styles.container}>
-      {/* LOAD OR UNLOAD CLIENT
-      <button onClick={() => setShouldLoadClient((prevState) => !prevState)}>
-        {shouldLoadClient ? "STOP CLIENT" : "START CLIENT"}
-      </button> */}
-      {/* SOCKET IO CLIENT */}
-      {shouldLoadClient ? <ChatWindow /> : null}
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/:roomId" component={ChatRoom} />
+      </Switch>
+    </Router>
   );
 };
 

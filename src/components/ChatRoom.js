@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // CSS
-import styles from "./css/ChatWindow.module.css";
+import styles from "./css/ChatRoom.module.css";
 
 // Custom Hook
 import useChat from "../utils/useChat";
@@ -10,9 +10,10 @@ import useChat from "../utils/useChat";
 import MessagesPanel from "./MessagesPanel";
 import NewMessageForm from "./NewMessageForm";
 
-const ChatWindow = () => {
-  const { messages, sendMessage } = useChat(); // custom hook
-  const [newMessage, setNewMessage] = useState("");
+const ChatRoom = (props) => {
+  const { roomId } = props.match.params; // Gets roomId from URL
+  const { messages, sendMessage } = useChat(roomId); // custom hook
+  const [newMessage, setNewMessage] = useState(""); // new message to be sent
 
   // as user types their message, this updates "newMessage" state
   const handleNewMessageChange = (event) => setNewMessage(event.target.value);
@@ -26,6 +27,7 @@ const ChatWindow = () => {
 
   return (
     <div className={styles.chat_window}>
+      <h1>Room: {roomId}</h1>
       <MessagesPanel messages={messages} className={styles.messages_panel} />
       <NewMessageForm
         newMessage={newMessage}
@@ -37,4 +39,4 @@ const ChatWindow = () => {
   );
 };
 
-export default ChatWindow;
+export default ChatRoom;

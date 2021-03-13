@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
-import ScrollBox from "./ScrollBox"
+import ScrollBox from "./ScrollBox";
 
 import styles from "./css/MessagesPanel.module.css";
 
@@ -19,8 +19,11 @@ const MessagesPanel = ({ messages, className }) => {
     return messages.map((message, i) => {
       // To scroll to the top of latest message instead
       const ref = null; // i === messages.length - 1 ? latestRef : null;
+      const itemClass = message.ownedByCurrentUser
+        ? styles.my_message
+        : styles.other_message;
       return (
-        <li key={i} ref={ref}>
+        <li key={i} ref={ref} className={itemClass}>
           {message.body}
         </li>
       );
