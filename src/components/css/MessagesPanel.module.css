@@ -2,13 +2,8 @@
   background-color: #f8f8f8;
   border-radius: 10px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-  padding: 1.5rem 2rem;
+  padding: 0.5rem 2rem;
   overflow: hidden;
-}
-
-.messages_container {
-  overflow: scroll;
-  height: 100%;
 }
 
 .messages_list {
