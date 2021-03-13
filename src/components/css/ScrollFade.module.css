@@ -1,0 +1,19 @@
+.fade_out,
+.fade_in {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100px;
+}
+
+.fade_in {
+  top: 0;
+  left: 0;
+  /* background-image: linear-gradient(to top, rgba(248, 248, 248, 0), rgba(248, 248, 248, 0.9) 100%); */
+}
+
+.fade_out {
+  bottom: 0;
+  left: 0;
+  /* background-image: linear-gradient(to bottom, rgba(248, 248, 248, 0), rgba(248, 248, 248, 0.9) 100%); */
+}

@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
+import ScrollFade from "./ScrollFade"
+
 import styles from "./css/MessagesPanel.module.css";
 
 const MessagesPanel = ({ messages, className }) => {
@@ -27,9 +29,13 @@ const MessagesPanel = ({ messages, className }) => {
 
   return (
     <div className={`${styles.messages_panel} ${className}`}>
-      <ol className={styles.messages_list}>{listOfMessages(messages)}</ol>
-      <div ref={latestRef} />
-      {/* <div className={styles.space_under_messages}></div> */}
+      <ScrollFade r={248} g={248} b={248}>
+        <div className={styles.messages_container}>
+          <ol className={styles.messages_list}>{listOfMessages(messages)}</ol>
+          <div ref={latestRef} />
+          {/* <div className={styles.space_under_messages}></div> */}
+        </div>
+      </ScrollFade>
     </div>
   );
 };
