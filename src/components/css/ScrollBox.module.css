@@ -9,7 +9,7 @@
 .fade_container {
   height: 100%;
   position: relative;
-  overflow: inherit;
+  overflow: hidden;
 }
 
 .fade_in {
