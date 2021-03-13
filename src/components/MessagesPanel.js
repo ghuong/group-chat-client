@@ -29,7 +29,7 @@ const MessagesPanel = ({ messages, className }) => {
 
   return (
     <div className={`${styles.messages_panel} ${className}`}>
-      <ScrollFade r={248} g={248} b={248}>
+      <ScrollFade backgroundColorSixCharHex="#f8f8f8">
         <div className={styles.messages_container}>
           <ol className={styles.messages_list}>{listOfMessages(messages)}</ol>
           <div ref={latestRef} />
