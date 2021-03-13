@@ -2,14 +2,9 @@ import React from "react";
 
 import styles from "./css/ScrollBox.module.css";
 
-/**
- * 
- * @param {String} bgColor 6 character hex code for background color, e.g. #f8f8f8 
- * @returns 
- */
-const ScrollBox = ({ children, bgColor = "#ffffff" }) => {
+const ScrollFade = ({ children, backgroundColorSixCharHex = "#ffffff" }) => {
   const fadeStyle = (direction) => ({
-    backgroundImage: `linear-gradient(to ${direction}, ${bgColor}00, ${bgColor}ff)`,
+    backgroundImage: `linear-gradient(to ${direction}, ${backgroundColorSixCharHex}00, ${backgroundColorSixCharHex}ff)`,
   });
 
   return (
@@ -21,4 +16,4 @@ const ScrollBox = ({ children, bgColor = "#ffffff" }) => {
   );
 };
 
-export default ScrollBox;
+export default ScrollFade;
