@@ -10,7 +10,11 @@ const ScrollFade = ({ children, bgColor = "#ffffff" }) => {
   return (
     <div className={styles.fade_container}>
       <div className={styles.fade_in} style={fadeStyle("top")} />
-      <div className={styles.scroll_container}>{children}</div>
+      <div className={styles.scroll_container}>
+        <div className={styles.fade_buffer} />
+        {children}
+        <div className={styles.fade_buffer} />
+      </div>
       <div className={styles.fade_out} style={fadeStyle("bottom")} />
     </div>
   );
