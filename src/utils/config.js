@@ -1,7 +1,8 @@
 /**
  * SocketIO Server
  */
-const SOCKET_SERVER_URL = "http://localhost:4001";
+const PORT = process.env.PORT || 4001;
+const SOCKET_SERVER_URL = `http://localhost:${PORT}`;
 
 /**
  * SocketIO event names
