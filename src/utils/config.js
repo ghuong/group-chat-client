@@ -3,7 +3,7 @@
  */
 const SOCKET_SERVER_URL =
   process.env.NODE_ENV === "production"
-    ? `https://group-chat-gary.herokuapp.com`
+    ? "group-chat-gary.herokuapp.com"
     : "http://localhost:4001";
 
 /**

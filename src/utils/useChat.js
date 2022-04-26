@@ -16,12 +16,13 @@ const useChat = (roomId) => {
   useEffect(() => {
     // Create WebSocket connection
     socketRef.current = socketIOClient(config.SOCKET_SERVER_URL, {
-      query: { roomId }, secure: true
+      query: { roomId },
+      secure: true,
     });
 
     // Listen for incoming messages
     socketRef.current.on(config.NEW_CHAT_MESSAGE_EVENT, (message) => {
-      const incomingMessage = { 
+      const incomingMessage = {
         ...message,
         ownedByCurrentUser: message.senderId === socketRef.current.id,
       };
