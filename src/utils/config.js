@@ -1,11 +1,10 @@
 /**
  * SocketIO Server
  */
-let SOCKET_SERVER_URL = "http://localhost:4001";
-
-if (process.env.NODE_ENV === "production") {
-  SOCKET_SERVER_URL = `https://group-chat-gary.herokuapp.com:${process.env.PORT}`;
-}
+const SOCKET_SERVER_URL =
+  process.env.NODE_ENV === "production"
+    ? `https://group-chat-gary.herokuapp.com`
+    : "http://localhost:4001";
 
 /**
  * SocketIO event names
