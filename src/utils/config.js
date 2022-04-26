@@ -1,8 +1,11 @@
 /**
  * SocketIO Server
  */
-const PORT = process.env.PORT || 4001;
-const SOCKET_SERVER_URL = `http://localhost:${PORT}`;
+let SOCKET_SERVER_URL = "http://localhost:4001";
+
+if (process.env.NODE_ENV === "production") {
+  SOCKET_SERVER_URL = `https://group-chat-gary.herokuapp.com:${process.env.PORT}`;
+}
 
 /**
  * SocketIO event names
