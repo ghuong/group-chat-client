@@ -6,7 +6,8 @@ import Form from "react-bootstrap/Form";
 import styles from "./css/Home.module.css";
 
 const Home = () => {
-  const [roomName, setRoomName] = useState("");
+  const defaultRoomSelection = "General";
+  const [roomName, setRoomName] = useState(defaultRoomSelection);
   const [username, setUsername] = useState("");
   // update roomName as user types it in
   const handleRoomNameChange = (event) => setRoomName(event.target.value);
@@ -23,16 +24,22 @@ const Home = () => {
           onChange={handleUsernameChange}
         />
         <Form.Control
-          type="text"
-          placeholder="Room"
-          value={roomName}
+          as="select"
+          aria-label="room"
           onChange={handleRoomNameChange}
-        />
+        >
+          <option value={defaultRoomSelection}>{defaultRoomSelection}</option>
+          <option value="Programming">Programming</option>
+        </Form.Control>
         <Button variant="primary">
-          <Link to={{
-            pathname: `/${roomName}`,
-            state: { username },
-          }}>Join</Link>
+          <Link
+            to={{
+              pathname: `/${roomName}`,
+              state: { username },
+            }}
+          >
+            Join
+          </Link>
         </Button>
       </Form>
     </div>

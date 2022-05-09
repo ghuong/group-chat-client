@@ -29,7 +29,7 @@ const ChatRoom = (props) => {
 
   return (
     <div className={styles.chat_window}>
-      <h1>Room: {roomId}</h1>
+      {/* <h1>Room: {roomId}</h1> */}
       <MessagesPanel messages={messages} className={styles.messages_panel} />
       <NewMessageForm
         newMessage={newMessage}

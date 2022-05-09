@@ -24,7 +24,8 @@ const MessagesPanel = ({ messages, className }) => {
         : styles.other_message;
       return (
         <li key={i} ref={ref} className={itemClass}>
-          {message.username} | {message.body}
+          <b>{message.username}</b><br />
+          {message.body}
         </li>
       );
     });
