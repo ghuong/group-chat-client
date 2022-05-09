@@ -7,8 +7,10 @@ import styles from "./css/Home.module.css";
 
 const Home = () => {
   const [roomName, setRoomName] = useState("");
+  const [username, setUsername] = useState("");
   // update roomName as user types it in
   const handleRoomNameChange = (event) => setRoomName(event.target.value);
+  const handleUsernameChange = (event) => setUsername(event.target.value);
 
   return (
     <div className={styles.home_container}>
@@ -16,12 +18,21 @@ const Home = () => {
         <Form.Label srOnly>Room Name</Form.Label>
         <Form.Control
           type="text"
+          placeholder="Username"
+          value={username}
+          onChange={handleUsernameChange}
+        />
+        <Form.Control
+          type="text"
           placeholder="Room"
           value={roomName}
           onChange={handleRoomNameChange}
         />
         <Button variant="primary">
-          <Link to={`/${roomName}`}>Join</Link>
+          <Link to={{
+            pathname: `/${roomName}`,
+            state: { username },
+          }}>Join</Link>
         </Button>
       </Form>
     </div>

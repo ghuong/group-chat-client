@@ -12,7 +12,9 @@ import NewMessageForm from "./NewMessageForm";
 
 const ChatRoom = (props) => {
   const { roomId } = props.match.params; // Gets roomId from URL
-  const { messages, sendMessage } = useChat(roomId); // custom hook
+  const { username } = props.location.state; // Get username state passed from react-router
+
+  const { messages, sendMessage } = useChat(roomId, username); // custom hook
   const [newMessage, setNewMessage] = useState(""); // new message to be sent
 
   // as user types their message, this updates "newMessage" state

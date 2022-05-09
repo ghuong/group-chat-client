@@ -9,7 +9,7 @@ import config from "./config";
  *  - messages: an array of received and sent messages
  *  - sendMessage: function that emits an event with a new message to server
  */
-const useChat = (roomId) => {
+const useChat = (roomId, username) => {
   const [messages, setMessages] = useState([]); // sent and received messages
   const socketRef = useRef();
 
@@ -40,6 +40,7 @@ const useChat = (roomId) => {
     socketRef.current.emit(config.NEW_CHAT_MESSAGE_EVENT, {
       body: messageBody,
       senderId: socketRef.current.id,
+      username
     });
   };
 
