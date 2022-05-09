@@ -1,3 +1,25 @@
 .home_container {
   height: 100%;
+  width: 100%;
+}
+
+.form {
+  height: 100%;
+  margin: 0 auto;
+  width: 80%;
+  max-width: 16rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.form_control {
+  align-self: stretch;
+}
+
+.submit_button {
+  width: 100%;
 }
