@@ -1,0 +1,24 @@
+.users_panel {
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  padding: 1rem 1.5rem 1rem 2rem;
+  overflow: hidden;
+}
+
+.users_list {
+  list-style: none;
+  padding-inline-start: 0;
+  margin-bottom: 0;
+}
+
+.users_list li {
+  margin: 0 0 0.5rem 0;
+}
+
+/* .user {} */
+
+.user_me {
+  font-weight: bold;
+}
+

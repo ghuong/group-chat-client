@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 
 // CSS
-import styles from "./css/ChatRoom.module.css";
+import css from "./css/ChatRoom.module.css";
 
 // Custom Hook
 import useChat from "../utils/useChat";
 
 // Child Components
 import MessagesPanel from "./MessagesPanel";
+import UsersPanel from "./UsersPanel";
 import NewMessageForm from "./NewMessageForm";
 
 const ChatRoom = (props) => {
@@ -28,14 +29,15 @@ const ChatRoom = (props) => {
   };
 
   return (
-    <div className={styles.chat_window}>
+    <div className={css.chat_window}>
       {/* <h1>Room: {roomId}</h1> */}
-      <MessagesPanel messages={messages} className={styles.messages_panel} />
+      <UsersPanel users={[username, "Mr. X"]} currentUser={username} className={css.users_panel} />
+      <MessagesPanel messages={messages} className={css.messages_panel} />
       <NewMessageForm
         newMessage={newMessage}
         handleNewMessageChange={handleNewMessageChange}
         handleSendMessage={handleSendMessage}
-        className={styles.new_message_form}
+        className={css.new_message_form}
       />
     </div>
   );

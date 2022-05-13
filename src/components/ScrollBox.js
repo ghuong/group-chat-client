@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "./css/ScrollBox.module.css";
+import css from "./css/ScrollBox.module.css";
 
 const ScrollFade = ({ children, bgColor = "#ffffff" }) => {
   const fadeStyle = (direction) => ({
@@ -8,14 +8,14 @@ const ScrollFade = ({ children, bgColor = "#ffffff" }) => {
   });
 
   return (
-    <div className={styles.fade_container}>
-      <div className={styles.fade_in} style={fadeStyle("top")} />
-      <div className={styles.scroll_container}>
-        <div className={styles.fade_buffer} />
+    <div className={css.fade_container}>
+      <div className={css.fade_in} style={fadeStyle("top")} />
+      <div className={css.scroll_container}>
+        <div className={css.fade_buffer} />
         {children}
-        <div className={styles.fade_buffer} />
+        <div className={css.fade_buffer} />
       </div>
-      <div className={styles.fade_out} style={fadeStyle("bottom")} />
+      <div className={css.fade_out} style={fadeStyle("bottom")} />
     </div>
   );
 };

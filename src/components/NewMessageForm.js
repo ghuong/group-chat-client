@@ -5,7 +5,7 @@ import { useStartTyping } from "react-use";
 // Bootstrap CSS
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import styles from "./css/NewMessageForm.module.css";
+import css from "./css/NewMessageForm.module.css";
 
 const NewMessageForm = ({
   newMessage,
@@ -26,7 +26,7 @@ const NewMessageForm = ({
         <Form.Label srOnly>Type Your Message</Form.Label>
         <Form.Control
           id="message"
-          className={`${styles.new_message_input}`}
+          className={`${css.new_message_input}`}
           placeholder="> Type your message..."
           value={newMessage}
           onChange={handleNewMessageChange}
@@ -35,7 +35,7 @@ const NewMessageForm = ({
         />
         <Button
           variant="secondary"
-          className={`${styles.btn_send_message}`}
+          className={`${css.btn_send_message}`}
           onClick={handleSendMessage}
         >
           Send
