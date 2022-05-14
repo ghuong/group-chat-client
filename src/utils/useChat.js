@@ -17,7 +17,7 @@ const useChat = (roomId, username) => {
   useEffect(() => {
     // Create WebSocket connection
     socketRef.current = socketIOClient(config.SOCKET_SERVER_URL, {
-      query: { roomId },
+      query: { roomId, username },
       secure: true,
     });
 
