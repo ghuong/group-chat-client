@@ -11,6 +11,7 @@ import config from "./config";
  */
 const useChat = (roomId, username) => {
   const [messages, setMessages] = useState([]); // sent and received messages
+  const [users, setUsers] = useState([]); // users connected to room
   const socketRef = useRef();
 
   useEffect(() => {
@@ -26,7 +27,17 @@ const useChat = (roomId, username) => {
         ...message,
         ownedByCurrentUser: message.senderId === socketRef.current.id,
       };
-      setMessages((messages) => [...messages, incomingMessage]);
+      setMessages((messages) => [...messages, incomingMessage]); //? arrow necessary?
+    });
+
+    // Listen for new users connecting to room
+    socketRef.current.on(config.USER_CONNECTED_EVENT, (newUser) => {
+      setUsers((users) => [...users, newUser]);
+    });
+
+    // Listen for users disconnecting from room
+    socketRef.current.on(config.USER_DISCONNECTED_EVENT, (removedUser) => {
+      setUsers((users) => [...users.filter((user) => user !== removedUser)]);
     });
 
     // Destroy socket reference when connection closes
@@ -40,11 +51,11 @@ const useChat = (roomId, username) => {
     socketRef.current.emit(config.NEW_CHAT_MESSAGE_EVENT, {
       body: messageBody,
       senderId: socketRef.current.id,
-      username
+      username,
     });
   };
 
-  return { messages, sendMessage };
+  return { messages, sendMessage, users };
 };
 
 export default useChat;
