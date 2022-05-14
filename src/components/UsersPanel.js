@@ -3,8 +3,9 @@ import css from "./css/UsersPanel.module.css";
 const UsersPanel = ({ users, className, currentUser }) => {
   const listOfUsers = (users) => {
     return users.map((user) => {
-      const userDisplay = user === currentUser ? <b>{user}</b> : user;
-      return <li key={user}>{userDisplay}</li>;
+      const userDisplay =
+        user.name === currentUser ? <b>{user.name}</b> : user.name;
+      return <li key={user.id}>{userDisplay}</li>;
     });
   };
 
