@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 import Button from "react-bootstrap/Button";
@@ -9,9 +9,13 @@ const Home = () => {
   const defaultRoomSelection = "general";
   const [roomName, setRoomName] = useState(defaultRoomSelection);
   const [username, setUsername] = useState("");
+  const nameInputRef = useRef(null);
   // update roomName as user types it in
   const handleRoomNameChange = (event) => setRoomName(event.target.value);
   const handleUsernameChange = (event) => setUsername(event.target.value);
+
+  // Auto-focus form input on first render
+  useEffect(() => nameInputRef.current.focus(), []);
 
   return (
     <div className={css.home_container}>
@@ -19,9 +23,10 @@ const Home = () => {
         <Form.Label srOnly>Room Name</Form.Label>
         <Form.Control
           type="text"
-          placeholder="Username"
+          placeholder="Name"
           value={username}
           onChange={handleUsernameChange}
+          ref={nameInputRef}
           className={css.form_control}
         />
         <Form.Control
@@ -31,7 +36,9 @@ const Home = () => {
           className={css.form_control}
         >
           <option value={defaultRoomSelection}>General Chat</option>
-          <option value="Programming">Programming</option>
+          <option value="breakout1">Breakout Room 1</option>
+          <option value="breakout2">Breakout Room 2</option>
+          <option value="breakout3">Breakout Room 3</option>
         </Form.Control>
 
         <Link

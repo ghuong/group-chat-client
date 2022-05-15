@@ -24,7 +24,7 @@ const useChat = (roomId, username) => {
   };
 
   useEffect(() => {
-    // Create WebSocket connection
+    // Establish socket connection with Socket.io server
     socketRef.current = socketIOClient(config.SOCKET_SERVER_URL, {
       query: { roomId, username },
       secure: true,
@@ -52,12 +52,13 @@ const useChat = (roomId, username) => {
       setUsers((users) => [...users.filter((user) => user.id !== removedUser.id)]);
     });
 
-    // Upon joining room, listen for the other users announcing their presence to us
+    // Upon joining room, listen for the other users (already in room)
+    // announcing their presence to us (so that we can update our users list)
     socketRef.current.on(config.ANNOUNCE_PRESENCE_EVENT, (otherUserInRoom) => {
       setUsers((users) => [...users, otherUserInRoom]);
     });
 
-    // Destroy socket reference when connection closes
+    // Return cleanup function: Disconnect from socket
     return () => socketRef.current.disconnect();
   }, [roomId, username]);
 
