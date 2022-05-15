@@ -32,7 +32,7 @@ It will `useEffect` to:
 2. register some listeners for events: new messages, users joining or leaving the room, etc. - the event handlers will update the corresponding state variables
 3. return a cleanup function which simply disconnects from the socket
 
-Finally, `useChat` will return an object containing the aforementioned state variables (`messages` and `users`), plus a `sendMessage` function, which emits a new chat message to the Socket.io server. 
+Finally, `useChat` will return an object containing the aforementioned state variables (`messages` and `users`), plus a `sendMessage` function, which emits a new chat message to the Socket.io server.
 
 See `socketcheatsheet.js` for examples of the different ways of emitting events.
 
@@ -47,4 +47,4 @@ See `socketcheatsheet.js` for examples of the different ways of emitting events.
 
 This React app is currently intended to be deployed as static assets by the Express server, see [server documentation](https://github.com/ghuong/group-chat-server). Thus, the Socket.io server is located on the same machine as the client.
 
-To deploy the React app separately from the server, update the Socket.io server URL in `src/utils/config.js`.
+To deploy the React app separately from the server, update the `SOCKET_SERVER_URL` in `src/utils/config.js`.
