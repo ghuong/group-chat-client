@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -25,16 +25,21 @@ const Home = () => {
   //   state: { username },
   // });
 
-  const handleSubmit = () => {
-    navigate({
-      to: `/rooms/${roomName}`,
-      state: { username }
-    });
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(`navigating to /rooms/${roomName}`);
+
+    navigate(`/rooms/${roomName}`, { state: { username } });
   };
 
   return (
     <div className={css.home_container}>
-      <Form autoComplete="off" onSubmit={handleSubmit} className={css.form} inline>
+      <Form
+        autoComplete="off"
+        onSubmit={handleSubmit}
+        className={css.form}
+        inline
+      >
         <Form.Label srOnly>Room Name</Form.Label>
         <Form.Control
           type="text"
@@ -56,11 +61,9 @@ const Home = () => {
           <option value="breakout3">Breakout Room 3</option>
         </Form.Control>
 
-        <Link to={`/rooms/${roomName}`} state={{ username }} className={css.form_control}>
-          <Button variant="primary" type="submit" className={css.submit_button}>
-            Join
-          </Button>
-        </Link>
+        <Button variant="primary" type="submit" className={css.submit_button}>
+          Join
+        </Button>
       </Form>
     </div>
   );
