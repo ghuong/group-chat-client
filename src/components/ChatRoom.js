@@ -31,7 +31,7 @@ const ChatRoom = (props) => {
   return (
     <div className={css.chat_window}>
       {/* <h1>Room: {roomId}</h1> */}
-      <UsersPanel users={users} currentUser={username} className={css.users_panel} />
+      <UsersPanel users={users} currentUsername={username} className={css.users_panel} />
       <MessagesPanel messages={messages} className={css.messages_panel} />
       <NewMessageForm
         newMessage={newMessage}

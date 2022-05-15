@@ -10,11 +10,13 @@ const Home = () => {
   const [roomName, setRoomName] = useState(defaultRoomSelection);
   const [username, setUsername] = useState("");
   const nameInputRef = useRef(null);
-  // update roomName as user types it in
-  const handleRoomNameChange = (event) => setRoomName(event.target.value);
-  const handleUsernameChange = (event) => setUsername(event.target.value);
 
-  // Auto-focus form input on first render
+  // update username as user types it in
+  const handleUsernameChange = (event) => setUsername(event.target.value);
+  // update roomName as selects one
+  const handleRoomNameChange = (event) => setRoomName(event.target.value);
+
+  // Auto-focus Name form input on first render
   useEffect(() => nameInputRef.current.focus(), []);
 
   return (

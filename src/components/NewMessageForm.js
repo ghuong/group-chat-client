@@ -7,13 +7,14 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import css from "./css/NewMessageForm.module.css";
 
+
 const NewMessageForm = ({
   newMessage,
   handleSendMessage,
   handleNewMessageChange,
   className,
 }) => {
-  const messageRef = useRef(null); // reference to a component
+  const messageRef = useRef(null); // reference to form input element
 
   // Auto-focus message input on first render
   useEffect(() => messageRef.current.focus(), []);

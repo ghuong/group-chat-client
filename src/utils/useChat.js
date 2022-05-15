@@ -14,15 +14,6 @@ const useChat = (roomId, username) => {
   const [users, setUsers] = useState([]); // users connected to room
   const socketRef = useRef();
 
-  /**
-   * Let new user know we're in the room with them (so they can add us to their users list)
-   */
-  const announcePresenceTo = (user) => {
-    socketRef.current.emit(config.ANNOUNCE_PRESENCE_EVENT, {
-      recipientUser: user,
-    });
-  };
-
   useEffect(() => {
     // Establish socket connection with Socket.io server
     socketRef.current = socketIOClient(config.SOCKET_SERVER_URL, {
@@ -43,7 +34,11 @@ const useChat = (roomId, username) => {
     socketRef.current.on(config.USER_CONNECTED_EVENT, (newUser) => {
       setUsers((users) => [...users, newUser]);
       if (newUser.id !== socketRef.current.id) {
-        announcePresenceTo(newUser);
+        // Announce our presence to the new user to let them know we're in the room with them
+        // (so they can add us to their users list)
+        socketRef.current.emit(config.ANNOUNCE_PRESENCE_EVENT, {
+          recipientUser: newUser,
+        });
       }
     });
 
@@ -60,7 +55,7 @@ const useChat = (roomId, username) => {
 
     // Return cleanup function: Disconnect from socket
     return () => socketRef.current.disconnect();
-  }, [roomId, username]);
+  }, [roomId, username]); // Run only once! (or when roomId or username change, which is never)
 
   /**
    * Sends a message to server that forwards to all other users

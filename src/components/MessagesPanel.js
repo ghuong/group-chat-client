@@ -4,15 +4,20 @@ import ScrollBox from "./ScrollBox";
 
 import css from "./css/MessagesPanel.module.css";
 
+/**
+ * Display list of messages
+ * @param {Array} messages messages
+ * @param {String} className css className
+ */
 const MessagesPanel = ({ messages, className }) => {
-  const latestRef = useRef(null); // ref to latest message
+  const latestRef = useRef(null); // reference to bottom of last message
 
   useEffect(() => {
     if (latestRef.current) {
       // scroll down to latest message when received
       latestRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [messages]);
+  }, [messages]); // run effect whenever `messages` changes
 
   // Returns html elements for a list of messages
   const listOfMessages = (messages) => {

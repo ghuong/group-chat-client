@@ -1,10 +1,16 @@
 import css from "./css/UsersPanel.module.css";
 
-const UsersPanel = ({ users, className, currentUser }) => {
+/**
+ * Displays a list of Users in the same chatroom
+ * @param {Array} users list of users
+ * @param {String} className css className
+ * @param {String} currentUser our username
+ */
+const UsersPanel = ({ users, className, currentUsername }) => {
   const listOfUsers = (users) => {
     return users.map((user) => {
       const userDisplay =
-        user.name === currentUser ? <b>{user.name}</b> : user.name;
+        user.name === currentUsername ? <b>{user.name}</b> : user.name;
       return <li key={user.id}>{userDisplay}</li>;
     });
   };
