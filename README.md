@@ -6,31 +6,45 @@ Live at [group-chat-gary.herokuapp.com](https://group-chat-gary.herokuapp.com)
 
 ## About
 
-This is the React web client for a real-time group chat app. There is a corresponding [server](https://github.com/ghuong/group-chat-server).
+This is the React web client for a real-time group chat app. There is a corresponding [Node.js (Express) server](https://github.com/ghuong/group-chat-server), which exposes a [Socket.io](https://socket.io/) server, allowing clients to keep open a two-way socket connection through which they can broadcast messages to one another in real-time.
 
 ## Getting Started
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+In the project directory, run `npm start` to run the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-In the project directory, you can run:
+Run `npm run build` to build the app for production to the `build` folder.
 
-### `npm start`
+## `useChat` custom hook
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This is where most of the Socket.io magic happens (at least on the client end). 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+It declares some state variables for:
 
-### `npm run build`
+1. chat `messages`
+2. `users` in the same chatroom
+3. and a `socketRef` (reference to the socket connection).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+It will `useEffect` to:
 
-## Learn More
+1. establish a socket connection with the Socket.io server (on the Node.js server)
+2. register some listeners for events: new messages, users joining or leaving the room, etc. - the event handlers will update the corresponding state variables
+3. return a cleanup function which simply disconnects from the socket
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Finally, `useChat` will return an object containing the aforementioned state variables (`messages` and `users`), plus a `sendMessage` function, which emits a new chat message to the Socket.io server. 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+See `socketcheatsheet.js` for examples of the different ways of emitting events.
+
+## Components
+
+- `App`: uses `react-router` to render either `Home` page, or `ChatRoom`
+- `ChatRoom`: Displays `messages` in a `MessagesPanel`, `users` in the room with a `UsersPanel`, and a `NewMessageForm`.
+- `MessagesPanel`: wraps the `messages` in a `ScrollBox`, and keeps a reference to an empty `<div>` at the bottom of the last message to automatically scroll down to the bottom whenever a new message is received
+- `ScrollBox`: Adds a subtle fade effect at the top and bottom edges, and enables css property `overflow: scroll`.
+
+## Deployment in Production
+
+This React app is currently intended to be deployed as static assets by the Express server, see [server documentation](https://github.com/ghuong/group-chat-server). Thus, the Socket.io server is located on the same machine as the client.
+
+To deploy the React app separately from the server, update the Socket.io server URL in `src/utils/config.js`.
