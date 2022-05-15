@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -10,6 +10,7 @@ const Home = () => {
   const [roomName, setRoomName] = useState(defaultRoomSelection);
   const [username, setUsername] = useState("");
   const nameInputRef = useRef(null);
+  const navigate = useNavigate();
 
   // update username as user types it in
   const handleUsernameChange = (event) => setUsername(event.target.value);
@@ -19,9 +20,21 @@ const Home = () => {
   // Auto-focus Name form input on first render
   useEffect(() => nameInputRef.current.focus(), []);
 
+  // const getChatRoomLink = () => ({
+  //   pathname: `/rooms/${roomName}`,
+  //   state: { username },
+  // });
+
+  const handleSubmit = () => {
+    navigate({
+      to: `/rooms/${roomName}`,
+      state: { username }
+    });
+  };
+
   return (
     <div className={css.home_container}>
-      <Form autoComplete="off" className={css.form} inline>
+      <Form autoComplete="off" onSubmit={handleSubmit} className={css.form} inline>
         <Form.Label srOnly>Room Name</Form.Label>
         <Form.Control
           type="text"
@@ -43,20 +56,14 @@ const Home = () => {
           <option value="breakout3">Breakout Room 3</option>
         </Form.Control>
 
-        <Link
-          to={{
-            pathname: `/${roomName}`,
-            state: { username },
-          }}
-          className={css.form_control}
-        >
-          <Button variant="primary" className={css.submit_button}>
+        <Link to={`/rooms/${roomName}`} state={{ username }} className={css.form_control}>
+          <Button variant="primary" type="submit" className={css.submit_button}>
             Join
           </Button>
         </Link>
       </Form>
     </div>
   );
-}
+};
 
-export default Home
+export default Home;

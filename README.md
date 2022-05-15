@@ -12,9 +12,11 @@ This is the React web client for a real-time group chat app. There is a correspo
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-In the project directory, run `npm start` to run the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+In the project directory, run `npm install` to install package dependencies. 
 
-Run `npm run build` to build the app for production to the `build` folder.
+Run `npm start` to run the app in development mode. View in browser at [http://localhost:3000](http://localhost:3000).
+
+Run `npm run build` to build the app for production to the `build/` folder.
 
 ## `useChat` custom hook
 

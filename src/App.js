@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./components/Home"
 import ChatRoom from "./components/ChatRoom";
@@ -7,12 +7,12 @@ const App = () => {
   // const [shouldLoadClient, setShouldLoadClient] = useState(true);
 
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/:roomId" component={ChatRoom} />
-      </Switch>
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/rooms/:roomId" element={<ChatRoom />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

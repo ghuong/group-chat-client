@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useParams, useLocation } from "react-router-dom";
 
 // CSS
 import css from "./css/ChatRoom.module.css";
@@ -12,8 +13,8 @@ import UsersPanel from "./UsersPanel";
 import NewMessageForm from "./NewMessageForm";
 
 const ChatRoom = (props) => {
-  const { roomId } = props.match.params; // Gets roomId from URL
-  const { username } = props.location.state; // Get username state passed from react-router
+  const { roomId } = useParams(); // Gets roomId from URL
+  const { username } = useLocation().state; // Get username state passed from react-router
 
   const { messages, sendMessage, users } = useChat(roomId, username); // custom hook
   const [newMessage, setNewMessage] = useState(""); // new message to be sent
