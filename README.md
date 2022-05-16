@@ -14,7 +14,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, run `npm install` to install package dependencies. 
 
-Run `npm start` to run the app in development mode. View in browser at [http://localhost:3000](http://localhost:3000).
+Run `npm start` to run the app in development mode. View in browser at [http://localhost:3000](http://localhost:3000). 
+
+*Note*: The chatroom functionality requires the server to also be running, see [server documentation](https://github.com/ghuong/group-chat-server).
 
 Run `npm run build` to build the app for production to the `build/` folder.
 
