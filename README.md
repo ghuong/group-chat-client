@@ -20,11 +20,9 @@ Run `npm start` to run the app in development mode. View in browser at [http://l
 
 Run `npm run build` to build the app for production to the `build/` folder.
 
-## Quickstart
+## Running the Server
 
-1. Have `npm` installed.
-
-2. git clone both this server project, and the corresponding React web client project into the same directory (but not one inside the other):
+1. git clone the [server project](https://github.com/ghuong/group-chat-server) into the parent directory of the React client project (i.e. not one inside the other). For example:
 
 ```git
 git clone https://github.com/ghuong/group-chat-server.git
@@ -34,6 +32,8 @@ git clone https://github.com/ghuong/group-chat-client.git
 3. Run `npm install` inside each of the server and client projects' folders
 
 4. Run `npm start` in each of the server and client projects' folders in two different terminals, and visit http://localhost:3000 to view the React web app.
+
+The chatroom functionality should work. To test this, open the app in two or more tabs, join the same chatroom, and send messages.
 
 ## `useChat` custom hook
 
