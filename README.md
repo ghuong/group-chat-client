@@ -12,13 +12,28 @@ This is the React web client for a real-time group chat app. There is a correspo
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-In the project directory, run `npm install` to install package dependencies. 
+In the project directory, run `npm install` to install package dependencies.
 
-Run `npm start` to run the app in development mode. View in browser at [http://localhost:3000](http://localhost:3000). 
+Run `npm start` to run the app in development mode. View in browser at [http://localhost:3000](http://localhost:3000).
 
-*Note*: The chatroom functionality requires the server to also be running, see [server documentation](https://github.com/ghuong/group-chat-server).
+*Note*: The chatroom functionality requires the server to also be running.
 
 Run `npm run build` to build the app for production to the `build/` folder.
+
+## Quickstart
+
+1. Have `npm` installed.
+
+2. git clone both this server project, and the corresponding React web client project into the same directory (but not one inside the other):
+
+```git
+git clone https://github.com/ghuong/group-chat-server.git
+git clone https://github.com/ghuong/group-chat-client.git
+```
+
+3. Run `npm install` inside each of the server and client projects' folders
+
+4. Run `npm start` in each of the server and client projects' folders in two different terminals, and visit http://localhost:3000 to view the React web app.
 
 ## `useChat` custom hook
 
